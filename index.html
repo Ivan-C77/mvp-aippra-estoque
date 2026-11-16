@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIPPRA - Gestão de Estoque Consignado</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --primary-color: #27ae60;
+            --border-color: #e0e0e0;
+            --font-size: 16px;
+        }
+
+        /* Classe ativada pelo botão de Alto Contraste */
+        body.high-contrast {
+            --bg-color: #000000;
+            --card-bg: #121212;
+            --text-color: #ffff00; /* Amarelo de alto contraste */
+            --primary-color: #718080; /* Ciano para destaque */
+            --border-color: #ffff00;
+            --font-size: 18px; /* Aumenta a legibilidade */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            font-size: var(--font-size);
+            transition: all 0.3s ease;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .accessibility-btn {
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: bold;
+            border: 2px solid var(--border-color);
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <h1>AIPPRA - Controle de Estoque</h1>
+        <button class="accessibility-btn" onclick="toggleContrast()" aria-label="Alternar modo de Alto Contraste">
+            👁️ Alto Contraste (Acessibilidade)
+        </button>
+    </header>
+
+    <main class="container">
+        <!-- Formulário de Entrada (Para a Captura 2) -->
+        <section class="card">
+            <h2>Cadastrar Item Consignado</h2>
+            <form id="stock-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="produtor">Produtor Rural (Araçagi - PB):</label>
+                    <input type="text" id="produtor" value="João da Silva - Comunidade Cuité" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="item">Item Agrícola / Artesanal:</label>
+                    <input type="text" id="item" placeholder="Ex: Mel Orgânico 500ml">
+                </div>
+                <div class="form-group">
+                    <label for="qtd">Quantidade em Lote:</label>
+                    <input type="number" id="qtd" placeholder="Ex: 25">
+                </div>
+            </form>
+        </section>
+
+        <!-- Tabela de Produtos (Para a Captura 1) -->
+        <section class="card">
+            <h2>Itens Consignados em Estoque</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Produtor</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Maria dos Santos</td>
+                        <td>Farinha de Mandioca (KG)</td>
+                        <td>50</td>
+                        <td>Disponível</td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>João da Silva</td>
+                        <td>Mel Orgânico (500ml)</td>
+                        <td>30</td>
+                        <td>Disponível</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+</body>
+</html>
